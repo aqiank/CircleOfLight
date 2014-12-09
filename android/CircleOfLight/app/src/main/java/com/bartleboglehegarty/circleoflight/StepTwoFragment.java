@@ -26,7 +26,6 @@ public class StepTwoFragment extends Fragment {
 	private View root;
 	private ImageView imageView;
 	private TextView textView;
-	
 	private View lastLayoutItem;
 	
 	@Override
@@ -52,7 +51,7 @@ public class StepTwoFragment extends Fragment {
 				getActivity()
 					.getFragmentManager()
 					.beginTransaction()
-                    .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right, R.anim.slide_out_left)
+					.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right, R.anim.slide_out_left)
 					.replace(R.id.fragment_container, fragment)
 					.addToBackStack(null)
 					.commit();
@@ -61,16 +60,16 @@ public class StepTwoFragment extends Fragment {
 		
 		textView = (TextView) root.findViewById(R.id.text);
 		
-		GridView grid = (GridView) root.findViewById(R.id.layout_grid);
 		LayoutAdapter layoutAdapter = new LayoutAdapter(getActivity(), 0);
+		GridView grid = (GridView) root.findViewById(R.id.layout_grid);
 		grid.setAdapter(layoutAdapter);
 		grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				if (lastLayoutItem != null) {
-					lastLayoutItem.setBackgroundColor(0x40ffffff);
-				}
 				view.setBackgroundColor(0x80ffffff);
+				if (lastLayoutItem != null)
+					lastLayoutItem.setBackgroundColor(0x40ffffff);
+
 				lastLayoutItem = view;
 				
 				switch (position) {
@@ -139,7 +138,7 @@ public class StepTwoFragment extends Fragment {
 	}
 	
 	private String takeScreenshot() {
-		// image naming and path  to include sd card  appending name you choose for file
+		// image naming and path to include sd card appending name you choose for file
 		String path = Environment.getExternalStorageDirectory().toString() + "/image.png";
 		
 		// create bitmap screen capture
@@ -147,15 +146,13 @@ public class StepTwoFragment extends Fragment {
 		root.setDrawingCacheEnabled(true);
 		
 		boolean hasText = textView.getText().length() > 0;
-		if (!hasText) {
+		if (!hasText)
 			textView.setVisibility(View.GONE);
-		}
 
 		bitmap = Bitmap.createBitmap(root.getDrawingCache(), (int) ((root.getWidth() - root.getHeight()) / 2), (int) imageView.getY(), imageView.getHeight(), imageView.getHeight());
 		root.setDrawingCacheEnabled(false);
-		if (!hasText) {
+		if (!hasText)
 			textView.setVisibility(View.VISIBLE);
-		}
 
 		OutputStream fout = null;
 		File imageFile = new File(path);

@@ -9,20 +9,20 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 
 public class ImgurResponse {
-    public Data data;
-    public boolean success;
-    public int status;
+	public Data data;
+	public boolean success;
+	public int status;
 
-    public class Data {
-        public String link;
-    }
+	public class Data {
+		public String link;
+	}
 
-    public static ImgurResponse parse(byte[] data) {
-        Gson gson = new Gson();
-        ByteArrayInputStream in = new ByteArrayInputStream(data);
-        JsonReader r = new JsonReader(new InputStreamReader(in));
-        JsonParser p = new JsonParser();
-        JsonElement e = p.parse(r);
-        return gson.fromJson(e, ImgurResponse.class);
-    }
+	public static ImgurResponse parse(byte[] data) {
+		Gson gson = new Gson();
+		ByteArrayInputStream in = new ByteArrayInputStream(data);
+		JsonReader r = new JsonReader(new InputStreamReader(in));
+		JsonParser p = new JsonParser();
+		JsonElement e = p.parse(r);
+		return gson.fromJson(e, ImgurResponse.class);
+	}
 }

@@ -1,52 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent" >
-	    
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
 	<LinearLayout
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_centerInParent="true"
-	    android:gravity="center"
-	    android:orientation="vertical" >
-	
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:orientation="vertical"
+		>
+
 		<ImageView
-		    android:id="@+id/image"
-		    android:layout_width="512dp"
-		    android:layout_height="512dp"
-		    android:layout_margin="16dp" />
-		
+			android:id="@+id/image"
+			android:layout_width="512dp"
+			android:layout_height="512dp"
+			android:layout_margin="16dp"
+			/>
+
 		<TextView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="16dp"
-	        android:orientation="vertical"
-	        android:gravity="center"
-	        android:text="@string/share_your_image"
-	        android:textSize="48sp" />
-		
-	    <GridView 
-	        android:id="@+id/social_grid"
-	        android:layout_width="640dp"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="16dp"
-	        android:columnWidth="128dp"
-	        android:numColumns="4"
-	        android:verticalSpacing="16dp" />
-	   
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:orientation="vertical"
+			android:gravity="center"
+			android:text="@string/share_your_image"
+			android:textSize="48sp"
+			/>
+
+		<GridView
+			android:id="@+id/social_grid"
+			android:layout_width="640dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:columnWidth="128dp"
+			android:numColumns="4"
+			android:verticalSpacing="16dp"
+			/>
+
 	</LinearLayout>
-	
-    <TextView 
-        android:id="@+id/ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="32dp"
-        android:padding="16dp"
-        android:background="@drawable/circle"
-        android:text="@string/ok"
-        android:textSize="36sp"
-        android:textColor="#ff000000" />
+
+	<TextView
+		android:id="@+id/ok"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:layout_margin="32dp"
+		android:padding="16dp"
+		android:background="@drawable/circle"
+		android:text="@string/ok"
+		android:textSize="36sp"
+		android:textColor="#ff000000"
+		/>
  
 </RelativeLayout>

@@ -53,7 +53,7 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class SocialAdapter extends ArrayAdapter<Integer> {
-    public static final String TAG = "SocialAdapter";
+	public static final String TAG = "SocialAdapter";
 
 	private static Twitter twitter;
 	private static RequestToken requestToken;
@@ -95,13 +95,12 @@ public class SocialAdapter extends ArrayAdapter<Integer> {
 			view = new ImageView(viewGroup.getContext());
 			view.setImageResource(ICONS[i]);
 			view.setLayoutParams(params);
-			if (i == 0) {
+			if (i == 0)
 				view.setOnClickListener(facebookListener);
-			} else if (i == 1) {
+			else if (i == 1)
 				view.setOnClickListener(wechatListener);
-			} else if (i == 2) {
+			else if (i == 2)
 				view.setOnClickListener(emailListener);
-			}
 		}
 
 		return view;
@@ -114,10 +113,8 @@ public class SocialAdapter extends ArrayAdapter<Integer> {
 			Session.openActiveSession((Activity) getContext(), true, new Session.StatusCallback() {
 				@Override
 				public void call(Session session, SessionState state, Exception exception) {
-					if (state.isOpened()) {
-						//publishFacebookPost();
-						uploadFacebook();
-					}
+					if (state.isOpened())
+						uploadFacebook(); // publishFacebookPost();
 				}
 			});
 		}
@@ -145,46 +142,26 @@ public class SocialAdapter extends ArrayAdapter<Integer> {
 		params.putString("link", "https://developers.facebook.com/android");
 		params.putString("picture", "https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
 
-		WebDialog feedDialog = (
-				new WebDialog.FeedDialogBuilder(getContext(),
-						Session.getActiveSession(),
-						params))
-				.setOnCompleteListener(new WebDialog.OnCompleteListener() {
-
-					@Override
-					public void onComplete(Bundle values,
-										   FacebookException error) {
-						if (error == null) {
-							// When the story is posted, echo the success
-							// and the post Id.
-							final String postId = values.getString("post_id");
-							if (postId != null) {
-								Toast.makeText(getContext(),
-										"Posted story, id: "+postId,
-										Toast.LENGTH_SHORT).show();
-							} else {
-								// User clicked the Cancel button
-								Toast.makeText(getContext().getApplicationContext(),
-										"Publish cancelled",
-										Toast.LENGTH_SHORT).show();
-							}
-						} else if (error instanceof FacebookOperationCanceledException) {
-							// User clicked the "x" button
-							Toast.makeText(getContext().getApplicationContext(),
-									"Publish cancelled",
-									Toast.LENGTH_SHORT).show();
-						} else {
-							// Generic, ex: network error
-							Toast.makeText(getContext().getApplicationContext(),
-									"Error posting story",
-									Toast.LENGTH_SHORT).show();
-						}
-
-						Session.getActiveSession().closeAndClearTokenInformation();
+		WebDialog feedDialog = (new WebDialog.FeedDialogBuilder(getContext(), Session.getActiveSession(), params))
+			.setOnCompleteListener(new WebDialog.OnCompleteListener() {
+				@Override
+				public void onComplete(Bundle values, FacebookException error) {
+					if (error == null) {
+						final String postId = values.getString("post_id");
+						if (postId != null)
+							Toast.makeText(getContext(), "Posted story, id: " + postId, Toast.LENGTH_SHORT).show();
+						else
+							Toast.makeText(getContext().getApplicationContext(), "Publish cancelled", Toast.LENGTH_SHORT).show();
+					} else if (error instanceof FacebookOperationCanceledException) {
+						Toast.makeText(getContext().getApplicationContext(), "Publish cancelled", Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(getContext().getApplicationContext(), "Error posting story", Toast.LENGTH_SHORT).show();
 					}
 
-				})
-				.build();
+					Session.getActiveSession().closeAndClearTokenInformation();
+				}
+			})
+			.build();
 		feedDialog.show();
 	}
 
@@ -196,17 +173,17 @@ public class SocialAdapter extends ArrayAdapter<Integer> {
 		params.putByteArray("source", out.toByteArray());
 
 		new Request(
-				Session.getActiveSession(),
-				"/me/photos",
-				params,
-				HttpMethod.POST,
-				new Request.Callback() {
-					@Override
-					public void onCompleted(Response response) {
-						Toast.makeText(getContext(), "Successfully uploaded photo to Facebook!", Toast.LENGTH_SHORT).show();
-						Session.getActiveSession().closeAndClearTokenInformation();
-					}
+			Session.getActiveSession(),
+			"/me/photos",
+			params,
+			HttpMethod.POST,
+			new Request.Callback() {
+				@Override
+				public void onCompleted(Response response) {
+					Toast.makeText(getContext(), "Successfully uploaded photo to Facebook!", Toast.LENGTH_SHORT).show();
+					Session.getActiveSession().closeAndClearTokenInformation();
 				}
+			}
 		).executeAsync();
 	}
 
@@ -262,65 +239,65 @@ public class SocialAdapter extends ArrayAdapter<Integer> {
 		}).show();
 	}
 
-    private void uploadToImgur() {
+	private void uploadToImgur() {
 		if (bitmap != null) {
 			showQRCode();
 			return;
 		}
 
-        RequestParams params = new RequestParams();
+		RequestParams params = new RequestParams();
 
-        try {
-            InputStream is = new FileInputStream(new File(StepFiveFragment.imagePath));
-            params.put("image", is);
-        } catch (FileNotFoundException e) {
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-            return;
-        }
+		try {
+			InputStream is = new FileInputStream(new File(StepFiveFragment.imagePath));
+			params.put("image", is);
+		} catch (FileNotFoundException e) {
+			Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+			return;
+		}
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        Header headers[] = new BasicHeader[1];
-        headers[0] = new BasicHeader("Authorization", "Client-ID e27c72efae76d50");
-        client.post(getContext(), "https://api.imgur.com/3/image", headers, params, "image/jpeg", new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Log.i(TAG, "Status: " + statusCode + "\nBody: " + new String(responseBody));
+		AsyncHttpClient client = new AsyncHttpClient();
+		Header headers[] = new BasicHeader[1];
+		headers[0] = new BasicHeader("Authorization", "Client-ID e27c72efae76d50");
+		client.post(getContext(), "https://api.imgur.com/3/image", headers, params, "image/jpeg", new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+				Log.i(TAG, "Status: " + statusCode + "\nBody: " + new String(responseBody));
 
-                ImgurResponse resp = ImgurResponse.parse(responseBody);
-                if (resp.status >= 400) {
-                    Toast.makeText(getContext(), "Failed to upload image", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+				ImgurResponse resp = ImgurResponse.parse(responseBody);
+				if (resp.status >= 400) {
+					Toast.makeText(getContext(), "Failed to upload image", Toast.LENGTH_SHORT).show();
+					return;
+				}
 
-                bitmap = Bitmap.createScaledBitmap(qrcode(resp.data.link), 512, 512, false);
+				bitmap = Bitmap.createScaledBitmap(qrcode(resp.data.link), 512, 512, false);
 				showQRCode();
-            }
+			}
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.i("MainActivity", "Status: " + statusCode + "\nBody: " + new String(responseBody));
-            }
-        });
+			@Override
+			public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+				Log.i("MainActivity", "Status: " + statusCode + "\nBody: " + new String(responseBody));
+			}
+		});
 
 		Toast.makeText(getContext(), "Uploading image for generating QR Code..", Toast.LENGTH_SHORT).show();
-    }
+	}
 
-    private Bitmap qrcode(String name) {
-        try {
-            QRCode qrcode = Encoder.encode(name, ErrorCorrectionLevel.Q);
-            ByteMatrix matrix = qrcode.getMatrix();
-            Bitmap bitmap = Bitmap.createBitmap(matrix.getWidth(), matrix.getHeight(), Bitmap.Config.RGB_565);
-            for (int y = 0; y < matrix.getHeight(); y++) {
-                for (int x = 0; x < matrix.getWidth(); x++) {
-                    bitmap.setPixel(x, y, matrix.get(x, y) == 0 ? 0xFFFFFFFF : 0xFF000000);
-                }
-            }
-            return bitmap;
-        } catch (WriterException e) {
+	private Bitmap qrcode(String name) {
+		try {
+			QRCode qrcode = Encoder.encode(name, ErrorCorrectionLevel.Q);
+			ByteMatrix matrix = qrcode.getMatrix();
+			Bitmap bitmap = Bitmap.createBitmap(matrix.getWidth(), matrix.getHeight(), Bitmap.Config.RGB_565);
+			for (int y = 0; y < matrix.getHeight(); y++) {
+				for (int x = 0; x < matrix.getWidth(); x++) {
+					bitmap.setPixel(x, y, matrix.get(x, y) == 0 ? 0xFFFFFFFF : 0xFF000000);
+				}
+			}
+			return bitmap;
+		} catch (WriterException e) {
 
-        }
-        return null;
-    }
+		}
+		return null;
+	}
 
 	private void showQRCode() {
 		if (bitmap != null) {

@@ -8,13 +8,13 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 
 public class ProgressView extends SurfaceView {
-    public static final String TAG = "ProgressView";
+	public static final String TAG = "ProgressView";
 	
 	private Paint paint = new Paint();
 	private Bitmap bitmap;
-    private int position;
-    private int finalPosition;
-    private boolean flip;
+	private int position;
+	private int finalPosition;
+	private boolean flip;
 	
 	public ProgressView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -26,8 +26,8 @@ public class ProgressView extends SurfaceView {
 	
 	public void updateProgress(int position, int finalPosition, boolean flip) {
 		this.position = position;
-        this.finalPosition = finalPosition;
-        this.flip = flip;
+		this.finalPosition = finalPosition;
+		this.flip = flip;
 		if (position <= StepThreeFragment.END) {
 			Canvas canvas = getHolder().lockCanvas();
 			if (canvas != null) {
@@ -51,29 +51,29 @@ public class ProgressView extends SurfaceView {
 		float h = bitmap.getHeight();
 
 		int y = (int) (((float)finalPosition / StepThreeFragment.END) * h);
-        if (y >= 0 && y < bitmap.getHeight()) {
-            if (!flip) {
-                for (float x = 0; x < w; x++) {
-                    float startX = x * (getWidth() / w) - (getWidth() / 2);
-                    float startY = 0;
-                    float stopX = startX + (getWidth() / w);
-                    float stopY = startY;
-                    int pix = bitmap.getPixel((int) x, y);
-                    paint.setColor(pix);
-                    canvas.drawLine(startX, startY, stopX, stopY, paint);
-                }
-            } else {
-                for (float x = w - 1; x >= 0; x--) {
-                    float startX = x * (getWidth() / w) - (getWidth() / 2);
-                    float startY = 0;
-                    float stopX = startX + (getWidth() / w);
-                    float stopY = startY;
-                    int pix = bitmap.getPixel((int) x, y);
-                    paint.setColor(pix);
-                    canvas.drawLine(startX, startY, stopX, stopY, paint);
-                }
-            }
-        }
+		if (y >= 0 && y < bitmap.getHeight()) {
+			if (!flip) {
+				for (float x = 0; x < w; x++) {
+					float startX = x * (getWidth() / w) - (getWidth() / 2);
+					float startY = 0;
+					float stopX = startX + (getWidth() / w);
+					float stopY = startY;
+					int pix = bitmap.getPixel((int) x, y);
+					paint.setColor(pix);
+					canvas.drawLine(startX, startY, stopX, stopY, paint);
+				}
+			} else {
+				for (float x = w - 1; x >= 0; x--) {
+					float startX = x * (getWidth() / w) - (getWidth() / 2);
+					float startY = 0;
+					float stopX = startX + (getWidth() / w);
+					float stopY = startY;
+					int pix = bitmap.getPixel((int) x, y);
+					paint.setColor(pix);
+					canvas.drawLine(startX, startY, stopX, stopY, paint);
+				}
+			}
+		}
 		
 		canvas.restore();	
 	}

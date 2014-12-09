@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import com.facebook.Session;
 
 public class MainActivity extends Activity {
-    private Fragment firstFragment = null;
+	private Fragment firstFragment = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH &&
 				Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
 				View decorView = getWindow().getDecorView();
@@ -35,22 +36,21 @@ public class MainActivity extends Activity {
 
 		setContentView(R.layout.activity_main);
 
-        gotoMainMenu();
+		gotoMainMenu();
 	}
 
-    public void gotoMainMenu() {
-        FragmentManager fm = getFragmentManager();
-        fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+	public void gotoMainMenu() {
+		FragmentManager fm = getFragmentManager();
+		fm.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-        if (firstFragment != null) {
-            fm.beginTransaction().remove(firstFragment).commit();
-        }
+		if (firstFragment != null)
+			fm.beginTransaction().remove(firstFragment).commit();
 
-        firstFragment = new StepOneFragment();
-        fm.beginTransaction()
-          .replace(R.id.fragment_container, firstFragment)
-          .commit();
-    }
+		firstFragment = new StepOneFragment();
+		fm.beginTransaction()
+			.replace(R.id.fragment_container, firstFragment)
+			.commit();
+	}
 	
 	public void back(View v) {
 		getFragmentManager().popBackStack();

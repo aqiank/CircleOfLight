@@ -40,7 +40,7 @@ public class StepThreeFragment extends Fragment {
 
 	private static final byte CMD_START[] = { 10 };
 	private static final byte CMD_PIXELS[] = { 11 };
-	private static final byte CMD_STOP[] =  { 12 };
+	private static final byte CMD_STOP[] = { 12 };
 
 	private static UsbSerialPort port = null;
 	private int position = 0;
@@ -147,7 +147,7 @@ public class StepThreeFragment extends Fragment {
 	}
 
 	private String saveResult() {
-		// image naming and path  to include sd card  appending name you choose for file
+		// image naming and path to include sd card appending name you choose for file
 		String path = Environment.getExternalStorageDirectory().toString() + "/result.jpg";
 		File imageFile = new File(path);
 		OutputStream fout;
@@ -169,9 +169,8 @@ public class StepThreeFragment extends Fragment {
 	}
 
 	private void openDevice() {
-		if (port == null) {
+		if (port == null)
 			port = getPort();
-		}
 
 		Log.d(TAG, "Resumed, port=" + port);
 		if (port == null) {
@@ -216,23 +215,19 @@ public class StepThreeFragment extends Fragment {
 		// Find all available drivers from attached devices.
 		UsbManager manager = (UsbManager) getActivity().getSystemService(Context.USB_SERVICE);
 		List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
-		if (availableDrivers.isEmpty()) {
+		if (availableDrivers.isEmpty())
 			return null;
-		}
 
 		// Open a connection to the first available driver.
 		UsbSerialDriver driver = availableDrivers.get(0);
 		UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
-		if (connection == null) {
-			// You probably need to call UsbManager.requestPermission(driver.getDevice(), ..)
-			return null;
-		}
+		if (connection == null)
+			return null; // You probably need to call UsbManager.requestPermission(driver.getDevice(), ..)
 
 		// Read some data! Most have just one port (port 0).
 		List<UsbSerialPort> ports = driver.getPorts();
-		if (ports.size() > 0) {
+		if (ports.size() > 0)
 			return ports.get(0);
-		}
 
 		return null;
 	}
@@ -272,9 +267,8 @@ public class StepThreeFragment extends Fragment {
 			int newPosition = ByteBuffer.wrap(buf).order(ByteOrder.LITTLE_ENDIAN).getShort();
 			if (Math.abs(newPosition - position) > SPEED) {
 				position += SPEED;
-				if (position > END) {
+				if (position > END)
 					position = END;
-				}
 			} else {
 				position = newPosition;
 			}
@@ -309,7 +303,7 @@ public class StepThreeFragment extends Fragment {
 			if (y >= 0 && y < bitmap.getHeight())
 				pix = bitmap.getPixel(x, bitmap.getHeight() - y - 1);
 
-			byte[] bs = { (byte) (((pix >> 16) & 0xff   ) / 8), (byte) (((pix >> 8) &  0xff) / 8), (byte) ((pix & 0xff) / 8) };
+			byte[] bs = { (byte) (((pix >> 16) & 0xff) / 8), (byte) (((pix >> 8) & 0xff) / 8), (byte) ((pix & 0xff) / 8) };
 			try {
 				port.write(bs, 1000);
 				//port.purgeHwBuffers(false, true);

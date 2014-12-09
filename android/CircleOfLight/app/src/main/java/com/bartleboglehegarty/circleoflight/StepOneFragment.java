@@ -24,8 +24,8 @@ public class StepOneFragment extends Fragment {
 	private TextView pattern = null;
 	private TextView pop = null;
 	private TextView superhero = null;
-    private TextView wings = null;
-    private TextView fairytale = null;
+	private TextView wings = null;
+	private TextView fairytale = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,26 +44,28 @@ public class StepOneFragment extends Fragment {
 			@Override
 			public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 				prevCategory = currCategory;
+
 				if (i == 0)
 					currCategory = black;
 				else if (i < 5)
-				      currCategory = animal;
+					currCategory = animal;
 				else if (i < 8)
-				      currCategory = brand;
+					currCategory = brand;
 				else if (i < 26)
-				      currCategory = face;
+					currCategory = face;
 				else if (i < 44)
-				      currCategory = opart;
+					currCategory = opart;
 				else if (i < 56)
-				      currCategory = pattern;
+					currCategory = pattern;
 				else if (i < 73)
-				      currCategory = pop;
+					currCategory = pop;
 				else if (i < 97)
-				      currCategory = superhero;
+					currCategory = superhero;
 				else if (i < 111)
 					currCategory = wings;
-                else
-                    currCategory = fairytale;
+				else
+					currCategory = fairytale;
+
 				updateSelection();
 			}
 
@@ -156,23 +158,24 @@ public class StepOneFragment extends Fragment {
 			}
 		});
 
-        wings = (TextView) root.findViewById(R.id.wings);
-        wings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fancyCoverFlow.setSelection(97, true);
-            }
-        });
+		wings = (TextView) root.findViewById(R.id.wings);
+		wings.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				fancyCoverFlow.setSelection(97, true);
+			}
+		});
 
-        fairytale = (TextView) root.findViewById(R.id.fairytale);
-        fairytale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fancyCoverFlow.setSelection(111, true);
-            }
-        });
+		fairytale = (TextView) root.findViewById(R.id.fairytale);
+		fairytale.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				fancyCoverFlow.setSelection(111, true);
+			}
+		});
 
 		currCategory = black;
+
 		updateSelection();
 
 		return root;

@@ -39,8 +39,8 @@ public class StepFiveFragment extends Fragment {
 		ok.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-                MainActivity ma = (MainActivity) getActivity();
-                ma.gotoMainMenu();
+				MainActivity ma = (MainActivity) getActivity();
+				ma.gotoMainMenu();
 			}
 		});
 
