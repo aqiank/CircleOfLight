@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <at.technikum.mti.fancycoverflow.FancyCoverFlow
+        android:id="@+id/fancyCoverFlow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+    
+    <TextView 
+        android:id="@+id/btn_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="32dp"
+        android:text="@string/select_an_image"
+        android:textSize="48sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/black"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/black"/>
+
+        <TextView
+            android:id="@+id/animal"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/animal"/>
+
+        <TextView
+            android:id="@+id/brand"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/brand"/>
+
+        <TextView
+            android:id="@+id/face"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/face"/>
+
+        <TextView
+            android:id="@+id/opart"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/opart"/>
+
+        <TextView
+            android:id="@+id/pattern"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/pattern"/>
+
+        <TextView
+            android:id="@+id/pop"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/pop"/>
+
+        <TextView
+            android:id="@+id/superhero"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/superhero"/>
+
+        <TextView
+            android:id="@+id/wings"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/wings"/>
+
+        <TextView
+            android:id="@+id/fairytale"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/roundrect_outline"
+            android:textColor="@color/white"
+            android:text="@string/fairytale"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
