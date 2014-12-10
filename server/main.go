@@ -5,10 +5,6 @@ import (
 	"log"
 )
 
-const FILENAME = "photo.jpg"
-
-var captured bool = false
-
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
 	http.ServeFile(w, r, path)

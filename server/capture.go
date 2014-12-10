@@ -2,10 +2,12 @@ package main
 
 import (
 	"net/http"
-	"os"
-	"log"
 	"github.com/jackyb/go-gphoto2"
+	"log"
 )
+
+var filename string
+var captured bool = false
 
 func CaptureHandler(w http.ResponseWriter, r *http.Request) {
 	go doCapture()
@@ -41,8 +43,8 @@ func doCapture() error {
 		goto out
 	}
 
-	_ = os.Remove(FILENAME)
-	err = file.Save(FILENAME)
+	filename = generateFilename()
+	err = file.Save(filename)
 	if err != nil {
 		goto out
 	}

@@ -24,7 +24,7 @@ Here's your picture taken by Circle Of Light!
 --frontier
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="` + FILENAME + `"
+Content-Disposition: attachment; filename="photo.jpg"
 
 `
 
@@ -44,7 +44,7 @@ func doEmail(r *http.Request) error {
 	to := []string{r.FormValue("to")}
 	
 	// Create Email
-	msg, err := createEmail(FILENAME)
+	msg, err := createEmail(filename)
 	if err != nil {
 		goto out
 	}
