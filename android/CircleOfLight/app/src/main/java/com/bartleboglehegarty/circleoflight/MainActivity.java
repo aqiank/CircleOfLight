@@ -13,7 +13,11 @@ import android.view.WindowManager;
 import com.facebook.Session;
 
 public class MainActivity extends Activity {
+	public static final String TAG = "MainActivity";
+
 	private Fragment firstFragment = null;
+
+	private static MachineController controller = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +29,7 @@ public class MainActivity extends Activity {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH &&
 				Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
 				View decorView = getWindow().getDecorView();
-				int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-								View.SYSTEM_UI_FLAG_FULLSCREEN;
+				int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
 				decorView.setSystemUiVisibility(uiOptions);
 		} else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 				View decorView = getWindow().getDecorView();
@@ -36,7 +39,30 @@ public class MainActivity extends Activity {
 
 		setContentView(R.layout.activity_main);
 
+		if (controller == null)
+			controller = new MachineController(this);
+
 		gotoMainMenu();
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		controller.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+
+		controller.onPause();
 	}
 
 	public void gotoMainMenu() {
@@ -56,9 +82,7 @@ public class MainActivity extends Activity {
 		getFragmentManager().popBackStack();
 	}
 
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	public static MachineController getMachineController() {
+		return controller;
 	}
 }

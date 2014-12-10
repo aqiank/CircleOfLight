@@ -29,15 +29,34 @@
 			android:textSize="48sp"
 			/>
 
-		<GridView
-			android:id="@+id/social_grid"
-			android:layout_width="640dp"
+		<LinearLayout
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="16dp"
-			android:columnWidth="128dp"
-			android:numColumns="4"
-			android:verticalSpacing="16dp"
-			/>
+			>
+
+			<ImageView
+				android:id="@+id/facebook"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/fb"
+				/>
+
+			<ImageView
+				android:id="@+id/email"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/email"
+				/>
+
+			<ImageView
+				android:id="@+id/qrcode"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/wechat"
+				/>
+
+		</LinearLayout>
 
 	</LinearLayout>
 
@@ -45,6 +64,7 @@
 		android:id="@+id/ok"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
 		android:layout_alignParentRight="true"
 		android:layout_alignParentTop="true"
 		android:layout_margin="32dp"
@@ -54,5 +74,15 @@
 		android:textSize="36sp"
 		android:textColor="#ff000000"
 		/>
+
+	<ProgressBar
+		android:id="@+id/progress"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/transparent_black"
+		android:indeterminate="true"
+		android:visibility="invisible"
+		/>
+
  
 </RelativeLayout>

@@ -51,17 +51,17 @@ public class StepOneFragment extends Fragment {
 					currCategory = animal;
 				else if (i < 8)
 					currCategory = brand;
-				else if (i < 26)
+				else if (i < 27)
 					currCategory = face;
-				else if (i < 44)
+				else if (i < 45)
 					currCategory = opart;
-				else if (i < 56)
+				else if (i < 57)
 					currCategory = pattern;
-				else if (i < 73)
+				else if (i < 74)
 					currCategory = pop;
-				else if (i < 97)
+				else if (i < 98)
 					currCategory = superhero;
-				else if (i < 111)
+				else if (i < 112)
 					currCategory = wings;
 				else
 					currCategory = fairytale;
@@ -130,7 +130,7 @@ public class StepOneFragment extends Fragment {
 		opart.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				fancyCoverFlow.setSelection(26, true);
+				fancyCoverFlow.setSelection(27, true);
 			}
 		});
 
@@ -138,7 +138,7 @@ public class StepOneFragment extends Fragment {
 		pattern.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				fancyCoverFlow.setSelection(44, true);
+				fancyCoverFlow.setSelection(45, true);
 			}
 		});
 
@@ -146,7 +146,7 @@ public class StepOneFragment extends Fragment {
 		pop.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				fancyCoverFlow.setSelection(56, true);
+				fancyCoverFlow.setSelection(57, true);
 			}
 		});
 
@@ -154,7 +154,7 @@ public class StepOneFragment extends Fragment {
 		superhero.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				fancyCoverFlow.setSelection(73, true);
+				fancyCoverFlow.setSelection(74, true);
 			}
 		});
 
@@ -162,7 +162,7 @@ public class StepOneFragment extends Fragment {
 		wings.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				fancyCoverFlow.setSelection(97, true);
+				fancyCoverFlow.setSelection(98, true);
 			}
 		});
 
@@ -170,7 +170,7 @@ public class StepOneFragment extends Fragment {
 		fairytale.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				fancyCoverFlow.setSelection(111, true);
+				fancyCoverFlow.setSelection(112, true);
 			}
 		});
 

@@ -2,17 +2,14 @@
 #include <HerkuleX.h>
 
 #define STRIP_PIN (6)
-#define STRIP_LEDS (216)
+#define STRIP_LEDS (214)
 
 #define MOTOR_ID (253)
 
+#define CMD_INIT (1)
 #define CMD_START (10)
 #define CMD_PIXELS (11)
 #define CMD_STOP (12)
-
-#define START (0)
-#define END (575)
-#define SPEED (10)
 
 WS2812 strip(STRIP_LEDS);
 cRGB pix;
@@ -22,6 +19,11 @@ static int16_t targetPosition;
 static int16_t position;
 static int16_t prevPosition;
 
+// Settings
+static int16_t startPosition;
+static int16_t endPosition;
+static int16_t motorSpeed;
+
 void setup() {
 	Serial.begin(115200);
 	
@@ -30,7 +32,6 @@ void setup() {
 	movePos(0);
 	
 	strip.setOutput(6);
-	strip.setColorOrderRGB();
 	clearPixels();
 }
 
@@ -42,14 +43,17 @@ void loop() {
 		// Idle, wait for the start signal
 		if (Serial.available()) {
 			int b = Serial.read();
-
-			// Received start signal, initialize everything
 			if (b == CMD_START) {
+				// Received start signal, initialize everything
 				prevPosition = 0;
 				position = 0;
 				targetPosition = 0;
 				started = true;
-				movePos(START);
+				movePos(startPosition);
+			} else if (b == CMD_INIT) {
+				startPosition = readS16();
+				endPosition = readS16();
+				motorSpeed = readS16();
 			}
 		}
 	}
@@ -61,19 +65,16 @@ void doStuff() {
 	position = HerkuleX.getPos(MOTOR_ID);
 
 	// Position bigger than 1023 is faulty, ignore that
-	if (position > 1023) {
+	if (position > 1023)
 		return;
-	}
 	
 	// Save bandwidth by sending position data only when it changes
 	if (position != prevPosition) {
-
-		// If target position hasn't reached END, increase it
-		if (targetPosition < END) {
-			targetPosition += SPEED;
-			if (targetPosition > END) {
-				targetPosition = END;
-			}
+		// If target position hasn't reached endPosition, increase it
+		if (targetPosition < endPosition) {
+			targetPosition += motorSpeed;
+			if (targetPosition > endPosition)
+				targetPosition = endPosition;
 			movePos(targetPosition);
 		}
 		
@@ -93,7 +94,7 @@ void doStuff() {
 			// Stopped drawing. Reset LED strip and motor
 			started = false;
 			clearPixels();
-			movePos(START);
+			movePos(startPosition);
 		}
 	}
 }
@@ -120,13 +121,18 @@ void updatePixels() {
 // Clear LED strip pixels
 void clearPixels() {
 	pix.r = pix.g = pix.b = 0;
-	for (int i = 0; i < STRIP_LEDS; i++) {
+	for (int i = 0; i < STRIP_LEDS; i++)
 		strip.set_crgb_at(i, pix);
-	}
 	strip.sync();
 }
 
 // Shortcut for HerkuleX's movePos
 void movePos(int16_t pos) {
 	HerkuleX.movePos(MOTOR_ID, pos, 255, HERKULEX_LED_GREEN);
+}
+
+int16_t readS16() {
+	while (Serial.available() < 2)
+		;
+	return (Serial.read() << 8) | Serial.read();
 }
