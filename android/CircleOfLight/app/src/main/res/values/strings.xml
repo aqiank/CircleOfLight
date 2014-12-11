@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CircleOfLight</string>
+    <string name="select_an_image">SELECT AN IMAGE</string>
+    <string name="type_something_here">TYPE SOMETHING HERE</string>
+    <string name="share_your_image">SHARE YOUR IMAGE</string>
+    <string name="ok">OK</string>
+    <string name="text_layout">TEXT LAYOUT</string>
+    <string name="text_color">TEXT COLOR</string>
+    <string name="text_size">TEXT SIZE</string>
+
+    <string name="black">BLACK</string>
+    <string name="christmas">CHRISTMAS</string>
+    <string name="fairytale">FAIRY TALE</string>
+    <string name="wings">WINGS</string>
+
+    <string name="waiting_for_camera_to_finish_processing">Waiting for camera to finish processing..</string>
+
+    <!-- Facebook -->
+    <string name="app_id">241421966009951</string>
+
+    <!-- Twitter -->
+    <string name="consumer_key">ZOZvdGWXKTLyifrnpMU2vQc5d</string>
+    <string name="consumer_secret">IIS4RdhywTtLZlDw1LPrXpXCRoWuuFcAZxhHEFKYoYrK2b8f2V</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent_black">#80000000</color>
+
+</resources>

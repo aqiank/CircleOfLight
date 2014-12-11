@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:orientation="vertical"
+		>
+
+		<ImageView
+			android:id="@+id/image"
+			android:layout_width="512dp"
+			android:layout_height="512dp"
+			android:layout_margin="16dp"
+			/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:orientation="vertical"
+			android:gravity="center"
+			android:text="@string/share_your_image"
+			android:textSize="48sp"
+			/>
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			>
+
+			<ImageView
+				android:id="@+id/facebook"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/fb"
+				/>
+
+			<ImageView
+				android:id="@+id/email"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/email"
+				/>
+
+			<ImageView
+				android:id="@+id/qrcode"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/wechat"
+				/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/ok"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:layout_margin="32dp"
+		android:padding="16dp"
+		android:background="@drawable/circle"
+		android:text="@string/ok"
+		android:textSize="36sp"
+		android:textColor="#ff000000"
+		/>
+
+	<ProgressBar
+		android:id="@+id/progress"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/transparent_black"
+		android:indeterminate="true"
+		android:visibility="invisible"
+		/>
+
+ 
+</RelativeLayout>

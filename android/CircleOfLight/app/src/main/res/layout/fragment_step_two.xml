@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:clickable="true"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
+	>
+
+	<ImageView
+		android:id="@+id/image"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_centerInParent="true"
+		android:adjustViewBounds="true"
+		/>
+
+	<EditText
+		android:id="@+id/text"
+		android:layout_width="1000dp"
+		android:layout_height="1000dp"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:background="#00000000"
+		android:textSize="48sp"
+		android:inputType="textNoSuggestions|textMultiLine"
+		android:cursorVisible="false"
+		android:hint="@string/type_something_here"
+		/>
+ 
+	<ImageButton
+		android:id="@+id/back"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:layout_margin="32dp"
+		android:padding="16dp"
+		android:background="@drawable/circle"
+		android:src="@drawable/ic_arrow_back_black_48dp"
+		android:onClick="back"
+		/>
+
+	<TextView
+		android:id="@+id/ok"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:layout_margin="32dp"
+		android:padding="16dp"
+		android:background="@drawable/circle"
+		android:text="@string/ok"
+		android:textSize="36sp"
+		android:textColor="#ff000000"
+		/>
+
+	<LinearLayout
+		android:layout_width="420dp"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		android:layout_alignParentLeft="true"
+		android:layout_centerVertical="true"
+		android:orientation="vertical"
+		android:gravity="center"
+		>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/text_layout"
+			/>
+
+		<GridView
+			android:id="@+id/layout_grid"
+			android:layout_width="256dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:numColumns="3"
+			android:columnWidth="72dp"
+			android:verticalSpacing="8dp"
+			/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/text_color"
+			/>
+
+		<GridView
+			android:id="@+id/color_grid"
+			android:layout_width="256dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:numColumns="4"
+			android:columnWidth="50dp"
+			android:verticalSpacing="8dp"
+			/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/text_size"
+			/>
+
+		<SeekBar
+			android:id="@+id/text_size"
+			android:layout_width="256dp"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:progress="48"
+			android:max="256"
+			/>
+
+	</LinearLayout>
+
+</RelativeLayout>

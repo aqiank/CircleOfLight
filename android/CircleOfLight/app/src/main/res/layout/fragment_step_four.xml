@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	>
+
+	<ImageView
+		android:id="@+id/image"
+		android:layout_width="1608dp"
+		android:layout_height="1068dp"
+		android:layout_centerInParent="true"
+		android:visibility="gone"
+		/>
+
+	<LinearLayout
+		android:id="@+id/progress"
+		android:layout_width="1608dp"
+		android:layout_height="1068dp"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:orientation="vertical"
+		>
+
+		<TextView
+			android:id="@+id/text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:text="@string/waiting_for_camera_to_finish_processing"
+			android:textSize="48sp"
+			/>
+
+		<ProgressBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="16dp"
+			android:indeterminate="true"
+			/>
+
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/ok"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentTop="true"
+		android:layout_margin="32dp"
+		android:padding="16dp"
+		android:background="@drawable/circle"
+		android:text="@string/ok"
+		android:textSize="36sp"
+		android:textColor="#ff000000"
+		android:visibility="gone"
+		/>
+
+</RelativeLayout>
