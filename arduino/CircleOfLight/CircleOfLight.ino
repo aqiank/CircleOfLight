@@ -2,7 +2,7 @@
 #include <HerkuleX.h>
 
 #define STRIP_PIN (6)
-#define STRIP_LEDS (214)
+#define STRIP_LEDS (212)
 
 #define MOTOR_ID (253)
 
@@ -27,7 +27,7 @@ static int16_t motorSpeed;
 void setup() {
 	Serial.begin(115200);
 	
-	HerkuleX.beginSerial1(115200);
+	HerkuleX.beginSerial2(115200);
 	HerkuleX.torqueOn(MOTOR_ID);
 	movePos(0);
 	

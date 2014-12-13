@@ -40,6 +40,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:src="@drawable/fb"
+                android:visibility="gone"
 				/>
 
 			<ImageView
@@ -54,6 +55,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:src="@drawable/wechat"
+                android:visibility="gone"
 				/>
 
 		</LinearLayout>
@@ -75,14 +77,30 @@
 		android:textColor="#ff000000"
 		/>
 
-	<ProgressBar
+	<LinearLayout
 		android:id="@+id/progress"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="@color/transparent_black"
-		android:indeterminate="true"
+		android:orientation="vertical"
+		android:gravity="center"
 		android:visibility="invisible"
-		/>
+		>
 
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/uploading_image_and_generating_qrcode"
+			android:textColor="@color/white"
+			android:textSize="16sp"
+			/>
+
+		<ProgressBar
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:indeterminate="true"
+			/>
+
+	</LinearLayout>
  
 </RelativeLayout>

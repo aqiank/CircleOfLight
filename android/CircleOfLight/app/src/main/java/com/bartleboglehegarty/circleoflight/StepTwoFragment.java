@@ -27,6 +27,7 @@ public class StepTwoFragment extends Fragment {
 	private ImageView imageView;
 	private TextView textView;
 	private View lastLayoutItem;
+	private boolean started;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class StepTwoFragment extends Fragment {
 		btnOk.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
+				if (started)
+					return;
 				String path = takeScreenshot();
 				Bundle bundle = new Bundle();
 				bundle.putString("imagePath", path);
@@ -55,6 +58,7 @@ public class StepTwoFragment extends Fragment {
 					.replace(R.id.fragment_container, fragment)
 					.addToBackStack(null)
 					.commit();
+				started = true;
 			}
 		});
 		
@@ -136,7 +140,14 @@ public class StepTwoFragment extends Fragment {
 		
 		return root;
 	}
-	
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		started = false;
+	}
+
 	private String takeScreenshot() {
 		// image naming and path to include sd card appending name you choose for file
 		String path = Environment.getExternalStorageDirectory().toString() + "/image.png";

@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -204,6 +205,7 @@ public class StepFiveFragment extends Fragment {
 
 	private void sendEmail() {
 		final EditText input = new EditText(getActivity());
+		input.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 		new AlertDialog.Builder(getActivity())
 			.setTitle("Send Email")
 			.setMessage("Enter your email address")

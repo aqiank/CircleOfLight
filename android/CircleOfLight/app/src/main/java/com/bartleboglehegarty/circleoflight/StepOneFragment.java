@@ -20,6 +20,8 @@ public class StepOneFragment extends Fragment {
 	private TextView christmas = null;
 	private TextView fairytale = null;
 	private TextView wing = null;
+	private TextView pop = null;
+	private TextView face = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +49,10 @@ public class StepOneFragment extends Fragment {
 					currCategory = fairytale;
 				else if (i < 103)
 					currCategory = wing;
+				else if (i < 120)
+					currCategory = pop;
+				else if (i < 139)
+					currCategory = face;
 
 				updateSelection();
 			}
@@ -56,7 +62,23 @@ public class StepOneFragment extends Fragment {
 
 			}
 		});
-		
+
+		fancyCoverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Bundle bundle = new Bundle();
+				bundle.putInt("resId", ImageAdapter.IMAGES[position]);
+				Fragment fragment = new StepTwoFragment();
+				fragment.setArguments(bundle);
+				getActivity().getFragmentManager()
+						.beginTransaction()
+						.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right, R.anim.slide_out_left)
+						.replace(R.id.fragment_container, fragment);
+
+				updateSelection();
+			}
+		});
+
 		fancyCoverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,6 +126,22 @@ public class StepOneFragment extends Fragment {
 			@Override
 			public void onClick(View view) {
 				fancyCoverFlow.setSelection(83, true);
+			}
+		});
+
+		pop = (TextView) root.findViewById(R.id.pop);
+		pop.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				fancyCoverFlow.setSelection(103, true);
+			}
+		});
+
+		face = (TextView) root.findViewById(R.id.face);
+		face.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				fancyCoverFlow.setSelection(120, true);
 			}
 		});
 

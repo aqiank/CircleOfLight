@@ -14,8 +14,11 @@
     <string name="christmas">CHRISTMAS</string>
     <string name="fairytale">FAIRY TALE</string>
     <string name="wings">WINGS</string>
+    <string name="pop">POP</string>
+    <string name="face">FACE</string>
 
     <string name="waiting_for_camera_to_finish_processing">Waiting for camera to finish processing..</string>
+    <string name="uploading_image_and_generating_qrcode">Uploading image for generating QR code..</string>
 
     <!-- Facebook -->
     <string name="app_id">241421966009951</string>

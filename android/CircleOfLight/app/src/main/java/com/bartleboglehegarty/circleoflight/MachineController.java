@@ -19,11 +19,11 @@ import java.util.List;
 public class MachineController {
 	public static final String TAG = "MachineController";
 
-	public static final int NUM_LEDS = 214;
+	public static final int NUM_LEDS = 212;
 	public static final short START_POSITION = 0;
-	public static final short END_POSITION = 574;
-	public static final int MOTOR_SPEED = 10;
-	private static final short OFFSET = 32;
+	public static final short END_POSITION = 583;
+	public static final int MOTOR_SPEED = 5;
+	private static final short OFFSET = 36;
 
 	private static final byte CMD_INIT[] = { 1 };
 	private static final byte CMD_START[] = { 10 };

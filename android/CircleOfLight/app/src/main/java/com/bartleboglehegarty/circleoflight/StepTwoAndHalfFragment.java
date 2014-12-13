@@ -1,7 +1,6 @@
 package com.bartleboglehegarty.circleoflight;
 
 import android.app.Fragment;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -9,11 +8,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.File;
 
 public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback {
 	private static final int BG_COUNT = 10;
@@ -22,7 +17,6 @@ public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback
 
 	private static String imagePath;
 
-	private View root;
 	private TextView counterText;
 	private int counter;
 
@@ -31,7 +25,7 @@ public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		root = inflater.inflate(R.layout.fragment_step_two_and_half, container, false);
+		final View root = inflater.inflate(R.layout.fragment_step_two_and_half, container, false);
 		counterText = (TextView) root.findViewById(R.id.counter);
 
 		Bundle bundle = getArguments();

@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +43,14 @@ public class StepThreeFragment extends Fragment implements MachineController.Cal
 		// Display simulation
 		displayProgress();
 
+		// Start sending the pixels to the Arduino
+		controller.startDrawing(bitmap);
+
+		SystemClock.sleep(200);
+
 		// Tell the camera to start capturing
 		capturePhoto();
 
-		// Start sending the pixels to the Arduino
-		controller.startDrawing(bitmap);
 	}
 
 	@Override

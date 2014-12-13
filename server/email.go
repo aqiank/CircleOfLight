@@ -12,7 +12,7 @@ import (
 const EmailContent = 
 `From: Circle of Light
 To: aqiank@gmail.com
-Subject: Test
+Subject: Your Photo
 MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary=frontier
 
