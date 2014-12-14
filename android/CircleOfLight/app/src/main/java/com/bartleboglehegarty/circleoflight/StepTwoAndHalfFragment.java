@@ -43,6 +43,12 @@ public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback
 	}
 
 	@Override
+	public void onPause() {
+		super.onPause();
+		handler.removeCallbacks(handler.getLooper().getThread());
+	}
+
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
