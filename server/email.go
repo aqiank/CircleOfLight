@@ -40,11 +40,16 @@ func EmailHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func doEmail(r *http.Request) error {
+	var msg []byte
+	file, err := os.OpenFile("list.txt", os.O_RDWR | os.O_APPEND, os.ModeAppend)
 	auth := smtp.PlainAuth("", "bbh.circleoflight@gmail.com", "t3lkomnet", "smtp.gmail.com")
 	to := []string{r.FormValue("to")}
-	
+
+	_, _ = file.Write([]byte(to[0] + " " + filename + "\n"))
+	defer file.Close()
+
 	// Create Email
-	msg, err := createEmail(filename)
+	msg, err = createEmail(filename)
 	if err != nil {
 		goto out
 	}
@@ -54,6 +59,7 @@ func doEmail(r *http.Request) error {
 	if err != nil {
 		goto out
 	}
+
 out:
 	if err != nil {
 		log.Println(err)

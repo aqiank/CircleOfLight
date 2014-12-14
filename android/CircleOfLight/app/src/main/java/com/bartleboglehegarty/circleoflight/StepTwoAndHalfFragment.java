@@ -16,6 +16,7 @@ public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback
 	private static final int UI_NEXT = 21;
 
 	private static String imagePath;
+	private static int imageId;
 
 	private TextView counterText;
 	private int counter;
@@ -29,8 +30,12 @@ public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback
 		counterText = (TextView) root.findViewById(R.id.counter);
 
 		Bundle bundle = getArguments();
-		if (bundle != null)
-			imagePath = bundle.getString("imagePath", null);
+		if (bundle != null) {
+			imageId = bundle.getInt("imageId", 0);
+			if (imageId == 0) {
+				imagePath = bundle.getString("imagePath", null);
+			}
+		}
 
 		return root;
 	}
@@ -38,7 +43,7 @@ public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback
 	@Override
 	public void onResume() {
 		super.onResume();
-		counter = 5;
+		counter = 10;
 		counterText.setText("" + counter);
 	}
 
@@ -80,6 +85,7 @@ public class StepTwoAndHalfFragment extends Fragment implements Handler.Callback
 
 		case UI_NEXT:
 			Bundle bundle = new Bundle();
+			bundle.putInt("imageId", imageId);
 			bundle.putString("imagePath", imagePath);
 			Fragment fragment = new StepThreeFragment();
 			fragment.setArguments(bundle);

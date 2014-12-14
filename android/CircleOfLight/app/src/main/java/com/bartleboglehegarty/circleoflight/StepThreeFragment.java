@@ -65,9 +65,15 @@ public class StepThreeFragment extends Fragment implements MachineController.Cal
 
 	private void loadBitmap() {
 		if (bitmap == null) {
-			String imagePath = getArguments().getString("imagePath", null);
-			if (imagePath != null)
-				bitmap = BitmapFactory.decodeFile(imagePath);
+			int imageId = getArguments().getInt("imageId", 0);
+			if (imageId == 0) {
+				String imagePath = getArguments().getString("imagePath", null);
+				if (imagePath != null) {
+					bitmap = BitmapFactory.decodeFile(imagePath);
+				}
+			} else {
+				bitmap = BitmapFactory.decodeResource(getActivity().getResources(), imageId);
+			}
 		}
 	}
 

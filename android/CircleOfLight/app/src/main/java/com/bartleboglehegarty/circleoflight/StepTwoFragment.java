@@ -28,6 +28,25 @@ public class StepTwoFragment extends Fragment {
 	private TextView textView;
 	private View lastLayoutItem;
 	private boolean started;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		int imageId = getArguments().getInt("resId", 0);
+		if (imageId != R.drawable.black) {
+			Bundle bundle = new Bundle();
+			bundle.putInt("imageId", imageId);
+			Fragment fragment = new StepTwoAndHalfFragment();
+			fragment.setArguments(bundle);
+			getActivity()
+				.getFragmentManager()
+				.beginTransaction()
+				.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right, R.anim.slide_out_left)
+				.replace(R.id.fragment_container, fragment)
+				.addToBackStack(null)
+				.commit();
+		}
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
