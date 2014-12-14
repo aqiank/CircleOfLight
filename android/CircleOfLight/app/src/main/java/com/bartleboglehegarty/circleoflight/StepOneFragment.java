@@ -17,11 +17,7 @@ public class StepOneFragment extends Fragment {
 	private TextView currCategory = null;
 
 	private TextView black = null;
-	private TextView christmas = null;
-	private TextView fairytale = null;
-	private TextView wing = null;
-	private TextView pop = null;
-	private TextView face = null;
+	private TextView davinci = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,16 +39,8 @@ public class StepOneFragment extends Fragment {
 
 				if (i == 0)
 					currCategory = black;
-				else if (i < 27)
-					currCategory = christmas;
-				else if (i < 83)
-					currCategory = fairytale;
-				else if (i < 103)
-					currCategory = wing;
-				else if (i < 120)
-					currCategory = pop;
-				else if (i < 139)
-					currCategory = face;
+				else if (i < 18)
+					currCategory = davinci;
 
 				updateSelection();
 			}
@@ -105,43 +93,11 @@ public class StepOneFragment extends Fragment {
 			}
 		});
 
-		christmas = (TextView) root.findViewById(R.id.christmas);
-		christmas.setOnClickListener(new View.OnClickListener() {
+		davinci = (TextView) root.findViewById(R.id.davinci);
+		davinci.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				fancyCoverFlow.setSelection(1, true);
-			}
-		});
-
-		fairytale = (TextView) root.findViewById(R.id.fairytale);
-		fairytale.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				fancyCoverFlow.setSelection(27, true);
-			}
-		});
-
-		wing = (TextView) root.findViewById(R.id.wing);
-		wing.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				fancyCoverFlow.setSelection(83, true);
-			}
-		});
-
-		pop = (TextView) root.findViewById(R.id.pop);
-		pop.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				fancyCoverFlow.setSelection(103, true);
-			}
-		});
-
-		face = (TextView) root.findViewById(R.id.face);
-		face.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				fancyCoverFlow.setSelection(120, true);
 			}
 		});
 

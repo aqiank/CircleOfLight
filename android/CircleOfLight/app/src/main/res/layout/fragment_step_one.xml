@@ -45,58 +45,14 @@
 			/>
 		
 		<TextView
-			android:id="@+id/christmas"
+			android:id="@+id/davinci"
 			android:layout_width="128dp"
 			android:layout_height="wrap_content"
 			android:layout_margin="16dp"
 			android:gravity="center"
 			android:background="@drawable/roundrect_outline"
 			android:textColor="@color/white"
-			android:text="@string/christmas"
-			/>
-
-		<TextView
-			android:id="@+id/fairytale"
-			android:layout_width="128dp"
-			android:layout_height="wrap_content"
-			android:layout_margin="16dp"
-			android:gravity="center"
-			android:background="@drawable/roundrect_outline"
-			android:textColor="@color/white"
-			android:text="@string/fairytale"
-			/>
-
-		<TextView
-			android:id="@+id/wing"
-			android:layout_width="128dp"
-			android:layout_height="wrap_content"
-			android:layout_margin="16dp"
-			android:gravity="center"
-			android:background="@drawable/roundrect_outline"
-			android:textColor="@color/white"
-			android:text="@string/wings"
-			/>
-
-		<TextView
-			android:id="@+id/pop"
-			android:layout_width="128dp"
-			android:layout_height="wrap_content"
-			android:layout_margin="16dp"
-			android:gravity="center"
-			android:background="@drawable/roundrect_outline"
-			android:textColor="@color/white"
-			android:text="@string/pop"
-			/>
-
-		<TextView
-			android:id="@+id/face"
-			android:layout_width="128dp"
-			android:layout_height="wrap_content"
-			android:layout_margin="16dp"
-			android:gravity="center"
-			android:background="@drawable/roundrect_outline"
-			android:textColor="@color/white"
-			android:text="@string/face"
+			android:text="@string/davinci"
 			/>
 
 	</LinearLayout>
